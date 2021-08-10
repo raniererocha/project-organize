@@ -1,13 +1,7 @@
 import createProjectFolder from "./createProject";
 import createPath from "./createPath";
 import { shellMsg } from "./shellComponents";
-
-export type project_type = "BACKEND" | "FRONTEND" | "EMPTY";
-export interface Project {
-  name: string;
-  project_path: string;
-  type: project_type;
-}
+import { Project } from "../../types/project";
 
 const start = async (c: Project) => {
   if (c.type) {

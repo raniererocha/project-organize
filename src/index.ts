@@ -1,5 +1,6 @@
 import path from "path";
-import start, { Project } from "./app/worker";
+import start from './app/worker'
+import { Project } from "../types/project";
 
 const config: Project = {
   name: "nome do projeto", //auto explicativo, o nome do projeto

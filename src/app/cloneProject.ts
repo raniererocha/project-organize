@@ -1,5 +1,5 @@
 import { useShell } from "./shellComponents";
-import { project_type } from "./worker";
+import { project_type } from "../../types/project";
 
 export const cloneAndStartProject = (type: project_type, path: string) => {
   switch (type) {
