@@ -11,8 +11,12 @@ export interface Project {
 }
 
 const start = async (c: Project) => {
-  const complete_path = createPath(c.name, c.project_path)
-  createProjectFolder(complete_path, c.type);
+  if (c.type) {
+    const complete_path = createPath(c.name, c.project_path);
+    createProjectFolder(complete_path, c.type);
+  } else {
+    console.log("Por favor defina o tipo de projeto!");
+  }
 };
 
 export default start;
