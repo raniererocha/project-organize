@@ -32,4 +32,4 @@ Basta clonar o repositório, rodar `npm install` ou `yarn install` para baixar a
 
 ### Extra
 
-Sinta-se livre pra mudar o que quiser! A ideia é te ajudar a focar só no que importa. Mude os repositórios, implemente uma interface visual. Seja livre!
+Sinta-se livre pra mudar o que quiser! A ideia é te ajudar a focar só no que importa. Mude os repositórios, implemente uma interface visual. Seja livre! :D
