@@ -1,36 +1,18 @@
 import shell from "shelljs";
 import { mkdir } from "fs/promises";
+import createProjectFolder from "./createProject";
+import createPath from "./createPath";
 
-export interface iProject {
+export type project_type = "BACKEND" | "FRONTEND" | "EMPTY";
+export interface Project {
   name: string;
   project_path: string;
-  type: "BACKEND" | "FRONTEND" | "EMPTY";
+  type: project_type;
 }
 
-const start = async (c: iProject) => {
-  let clean_name = c.name.replace(/ /g, "-").replace(/\^!@#\$%\*\/\+=.,;/g, "");
-  let complete_path = `${c.project_path}/${clean_name}`;
-
-  mkdir(complete_path)
-    .then(() => {
-      if (c.type === "BACKEND") {
-        shell.exec(
-          `cd ${complete_path} && git clone -q https://github.com/raniererocha/default-project-be . && npm install`
-        );
-        shell.exec(`cd ${complete_path} && code .`);
-      } else if (c.type === "FRONTEND") {
-        console.log("Clonando o repo frontend");
-      } else {
-        console.log("Ok, só vou abrir o vscode pra você!");
-      }
-    })
-    .catch(({ message }) => {
-      if (message.includes("EEXIST")) {
-        console.log("Vou só abrir o vscode pra tu, moral!");
-      } else {
-        console.log(message);
-      }
-    });
+const start = async (c: Project) => {
+  const complete_path = createPath(c.name, c.project_path)
+  createProjectFolder(complete_path, c.type);
 };
 
 export default start;
