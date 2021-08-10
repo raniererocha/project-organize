@@ -1,14 +1,5 @@
-import shell from "shelljs";
+import { useShell } from "./shellComponents";
 import { project_type } from "./worker";
-
-const useShell = async (path: string, repo?: string, text?: string) => {
-  text ? shell.echo(text) : "";
-  shell.exec(`cd ${path} && ${repo} && npm install`, {
-    silent: true,
-  });
-  shell.echo("Abrindo o Visual Studio Code!");
-  shell.exec(`cd ${path} && code .`);
-};
 
 export const cloneAndStartProject = (type: project_type, path: string) => {
   switch (type) {

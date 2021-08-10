@@ -1,7 +1,6 @@
-import shell from "shelljs";
-import { mkdir } from "fs/promises";
 import createProjectFolder from "./createProject";
 import createPath from "./createPath";
+import { shellMsg } from "./shellComponents";
 
 export type project_type = "BACKEND" | "FRONTEND" | "EMPTY";
 export interface Project {
@@ -15,7 +14,7 @@ const start = async (c: Project) => {
     const complete_path = createPath(c.name, c.project_path);
     createProjectFolder(complete_path, c.type);
   } else {
-    console.log("Por favor defina o tipo de projeto!");
+    shellMsg("O Tipo do projeto não foi selecionado. Por favor, selecione um!");
   }
 };
 
