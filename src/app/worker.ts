@@ -1,15 +1,8 @@
-import createProjectFolder from "./createProject";
-import createPath from "./createPath";
-import { shellMsg } from "./shellComponents";
-import { Project } from "../../types/project";
+import createProject from "./createProject";
+import selectType from "./selectType";
 
-const start = async (c: Project) => {
-  if (c.type) {
-    const complete_path = createPath(c.name, c.project_path);
-    createProjectFolder(complete_path, c.type);
-  } else {
-    shellMsg("O Tipo do projeto não foi selecionado. Por favor, selecione um!");
-  }
+export const worker = {
+  init(name: string, type: project_type) {
+    createProject(name, type, selectType);
+  },
 };
-
-export default start;

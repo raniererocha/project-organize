@@ -1,7 +1,9 @@
-const createPath = (name: string, path: string) : string => {
-    let clean_name = name.replace(/ /g, "-").replace(/\^!@#\$%\*\/\+=.,;/g, "");
-    let complete_path = `${path}/${clean_name}`;
-    return complete_path
-}
+import { config } from "../../config";
+
+const createPath = (p: string): string => {
+  let clean_name = p.replace(/ /g, "-").replace(/\^!@#\$%\*\/\+=.,;/g, "");
+  let path = `${config["projects-path"]}/${clean_name}`;
+  return path;
+};
 
 export default createPath;

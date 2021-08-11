@@ -1,20 +1,24 @@
 import { mkdir } from "fs/promises";
-import cloneAndStartProject from "./cloneProject";
-import { shellMsg, useShell } from "./shellComponents";
-import { project_type } from "../../types/project";
+import createPath from "./createPath";
+import { shellMsg } from "./shellComponents";
 
-const createProjectFolder = (path: string, type: project_type) => {
-  mkdir(path)
+const createProject = (
+  p: string,
+  t: project_type,
+  fn: (p: string, t: project_type) => void
+) => {
+  mkdir(createPath(p))
     .then(() => {
-      cloneAndStartProject(type, path);
+      fn(p, t);
     })
     .catch(({ message }) => {
       if (message.includes("EXIST")) {
-        useShell(path, "", "Projeto já existe");
+        shellMsg("O projeto já existe!");
+        fn(p, (t = "EMPTY"));
       } else {
         shellMsg(message);
       }
     });
 };
 
-export default createProjectFolder;
+export default createProject;
